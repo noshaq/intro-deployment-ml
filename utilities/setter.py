@@ -1,6 +1,6 @@
 import os
 from base64 import b64decode
-
+# Function to decothe the account key
 def main():
     key = os.environ.get('SERVICE_ACCOUNT_KEY')
     with open('path.json','w') as json_file:
