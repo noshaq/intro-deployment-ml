@@ -22,17 +22,17 @@ jobs:
           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
       - name: Creating and activating virtualenv
         run: |
-          pip3 install virtualenv
-          virtualenv gross
-          source gross/bin/activate
-          pip install -r requirements_test.txt
-          export GOOGLE_APPLICATION_CREDENTIALS=$(python utilities/setter.py)
-          dvc pull model/model.pkl -r model-track
-          dcv unprotect
-          dcv repro -f
-          eco "Training Complete"
-          dvc add model/model.pkl -r model-track --to-remote
-          dvc push model/model.pkl.dvc -r model-track
+           pip3 install virtualenv
+           virtualenv venv
+           source venv/bin/activate
+           pip install -r src/requirements.txt
+           export GOOGLE_APPLICATION_CREDENTIALS=$(python utilities/setter.py)
+           dvc pull model/model.pkl.dvc -r model-track
+           dvc unprotect model/model.pkl
+           dvc repro -f 
+           echo "Training Completed"
+           dvc add model/model.pkl -r model-track --to-remote
+           dvc push model/model.pkl.dvc -r model-track
       - name: Commit dvc file changes
         run: |
           git config --local user.email "andres.fgutierrezruiz@gmail.com" 
