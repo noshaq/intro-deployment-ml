@@ -39,7 +39,7 @@ jobs:
           git config --local user.name "git-mdl-trainer"
           git add model/model.pkl.dvc
           git commit -m "Updating model weigths"
-      - uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@master
         with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: ${{ github.ref }}
