@@ -39,7 +39,7 @@ jobs:
           git config --local user.name "git-ml-trainer"
           git add model/model.pkl.dvc
           git commit -m "Updating model weigths"
-      - uses: iterative/setup-cml@v1
+        uses: iterative/setup-cml@v1
       - name: Push metrics
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
