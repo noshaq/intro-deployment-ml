@@ -20,4 +20,6 @@ jobs:
       - name: Train model 
         env:
           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
- 
+      - name: Creating and activating virtualenv
+        run: |
+           pip3 install virtualenv
