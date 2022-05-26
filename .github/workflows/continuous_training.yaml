@@ -33,19 +33,4 @@ jobs:
            echo "Training Completed"
            dvc add model/model.pkl -r model-track --to-remote
            dvc push model/model.pkl.dvc -r model-track
-      - name: Commit dvc file changes
-        run: |
-          git config --local user.email "andres.fgutierrezruiz@gmail.com" 
-          git config --local user.name "git-mdl-trainer"
-          git add model/model.pkl.dvc
-          git commit -m "Updating model weigths"
-      - uses: ad-m/github-push-action@master
-        with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            branch: ${{ github.ref }}
-      - uses: iterative/setup-cml@v1
-      - name: Push metrics
-        run: |
-          cat report.txt >> report.md 
-          cml-publish prediction_behavior.png --md >> report.md
-          cml-send-comment report.md
+    
