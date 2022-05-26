@@ -17,10 +17,3 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2 
-      - name: Train model 
-        env:
-          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-      - name: Creating and activating virtualenv
-        run: |
-           pip3 install virtualenv
-
