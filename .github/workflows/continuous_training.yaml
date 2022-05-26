@@ -2,24 +2,23 @@ name: Continuous Training
 on:
   push:
     branches:
-      - workflow_continous_training
+      -  workflow_continous_training 
   schedule:
-    - cron: '0 */6 * * *'  
+    - cron: '0 */6 * * *'
   workflow_dispatch:
-    imputs:
+    inputs:
       reason:
-        description: Why to run This?
+        description: Why to run this?
         required: false
         default: running CT
-jobs: 
-  continous-training:
+jobs:
+  continuous-training:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2 
-      - name: Train model 
-        env:
+        uses: actions/checkout@v2
+      - name: Train model
+        env: 
           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-      - name: Creating and activating virtualenv
         run: |
            pip3 install virtualenv
