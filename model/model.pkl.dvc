@@ -1,4 +1,4 @@
 outs:
-- md5: e26a3ffda4183b866071abba135a4ec0
-  size: 357346
+- md5: 32c401f216198e3a430cd6970ac14622
+  size: 420914
   path: model.pkl
